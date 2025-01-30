@@ -3,7 +3,8 @@ const idInput = "amigo";
 const idlistaAmigos = "listaAmigos";
 const idresultado = "resultado";
 const idbotaoSorteio = "botaoSorteio"
-const htmlBotaoReset = `<img src="assets/play_circle_outline.png" alt="Ícone para sortear">Sortear amigo`
+const htmlBotaoReset = '<img src="assets/play_circle_outline.png" alt="Ícone para sortear"> Resetar Jogo';
+const htmlBotaoSorteio = '<img src="assets/play_circle_outline.png" alt="Ícone para sortear"> Sortear Amigo';
 const badwords = [
     "porra", "pênis", "penis", "caralho", "bosta", "merda", "puta", "puto", 
     "desgraça", "desgraca", "cacete", "cu", "foda", "foder", "arrombado", 
@@ -31,16 +32,23 @@ function adicionarAmigo(){
 function sortearAmigo(){
     let lenArr = arrayAmigos.length;
     let nomeSorteado = arrayAmigos[getRandom(lenArr)];
-    sorteadoPreReset = nomeSorteado;
 
-    if(arrayAmigos.length <= 1){
+    if(arrayAmigos.length <= 1 && sorteioRealizado == false){
         return alert("Adicione mais amigos antes de sortear");
+    } if(sorteioRealizado){
+        limparLista(idlistaAmigos);
+        alert(`Reiniciando Jogo`)
+        arrayAmigos = [];
+        sorteioRealizado = false;
+        alterarBotao(idbotaoSorteio, htmlBotaoSorteio);
+        limparLista(idresultado);
+        return;
     }
 
     sorteioRealizado = true;
-    alert(`Uhull você tirou: ${nomeSorteado}`);
-    adicionarNaLista(nomeSorteado, idresultado);
+    adicionarNaLista(`Você sorteou: ${nomeSorteado}`, idresultado);
     limparLista(idlistaAmigos);
+    alterarBotao(idbotaoSorteio, htmlBotaoReset);
 }
 
 function adicionarNaLista(nome, listaId){
@@ -53,6 +61,7 @@ function adicionarNaLista(nome, listaId){
 function limparLista(idLista){
     let lista = getCampo(idLista);
     lista.innerHTML = "";
+    arrayAmigos = [];
 }
 
 function validarInput(input){
@@ -77,6 +86,11 @@ function getCampo(idCampo){
 
 function getRandom(max) {
     return Math.floor(Math.random() * ((max) - 0) + 0);
+}
+
+function alterarBotao(idBotao,html){
+    let botao = getCampo(idBotao);
+    botao.innerHTML = html;
 }
 
 function resetGame(){
