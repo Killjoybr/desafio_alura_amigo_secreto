@@ -71,7 +71,11 @@ function validarInput(input){
     } else if(arrayAmigos.includes(input)){
         alert("Nome já incluído, adicione o sobrenome ou outro indentificador");
         return false;
+    } else if(input.trim() == ""){
+        alert("Campo vazio, por favor preencha");
+        return false;
     }
+
     return true;
 }
 
