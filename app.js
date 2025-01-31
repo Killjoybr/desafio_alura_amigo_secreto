@@ -98,7 +98,3 @@ function alterarBotao(idBotao,html){
     let botao = getCampo(idBotao);
     botao.innerHTML = html;
 }
-
-function resetGame(){
-
-}
