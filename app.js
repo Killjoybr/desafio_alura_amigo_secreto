@@ -69,9 +69,11 @@ function validarInput(input){
         alert("Sem palavrão!");
         return false;
     } else if(arrayAmigos.includes(input)){
+        getCampo(idInput).value = "";
         alert("Nome já incluído, adicione o sobrenome ou outro indentificador");
         return false;
     } else if(input.trim() == ""){
+        getCampo(idInput).value = "";
         alert("Campo vazio, por favor preencha");
         return false;
     }
