@@ -3,7 +3,7 @@ const idInput = "amigo";
 const idlistaAmigos = "listaAmigos";
 const idresultado = "resultado";
 const idbotaoSorteio = "botaoSorteio"
-const htmlBotaoReset = '<img src="assets/play_circle_outline.png" alt="Ícone para sortear"> Resetar Jogo';
+const htmlBotaoReset = '<img src="assets/play_circle_outline.png" alt="Ícone para sortear"> Resetar Sorteio';
 const htmlBotaoSorteio = '<img src="assets/play_circle_outline.png" alt="Ícone para sortear"> Sortear Amigo';
 const badwords = [
     "porra", "pênis", "penis", "caralho", "bosta", "merda", "puta", "puto", 
